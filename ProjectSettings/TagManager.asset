@@ -7,6 +7,8 @@ TagManager:
   - Card
   - CardContent
   - GameStateManager
+  - References
+  - ReferenceCardPrefab
   layers:
   - Default
   - TransparentFX

@@ -1,15 +1,23 @@
-﻿namespace Assets.Scripts.Helpers
+﻿using System.ComponentModel;
+
+namespace Assets.Scripts.Helpers
 {
 	public class Enums
 	{
 		public enum CardSignsEnum
 		{
-			Spades = 0,
-			Clubs = 1,
-			Hearts = 2,
-			Diamonds = 3,
-			Circle = 4,
-			Star = 5
+			[Description("Spades")]
+			Spades,
+			[Description("Clubs")]
+			Clubs,
+			[Description("Hearts")]
+			Hearts,
+			[Description("Diamonds")]
+			Diamonds,
+			[Description("Circles")]
+			Circles,
+			[Description("Stars")]
+			Stars
 		}
 	}
 }
