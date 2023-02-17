@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 111135747}
   m_Layer: 0
   m_Name: Circle_9
-  m_TagString: Untagged
+  m_TagString: CardPositionReference
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 261085485}
   m_Layer: 0
   m_Name: Circle_6
-  m_TagString: Untagged
+  m_TagString: CardPositionReference
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 287642309}
   m_Layer: 0
   m_Name: References
-  m_TagString: References
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 291218429}
   m_Layer: 0
   m_Name: Circle_2
-  m_TagString: Untagged
+  m_TagString: CardPositionReference
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -558,6 +558,7 @@ GameObject:
   m_Component:
   - component: {fileID: 594007583}
   - component: {fileID: 594007584}
+  - component: {fileID: 594007585}
   m_Layer: 0
   m_Name: GameState
   m_TagString: GameStateManager
@@ -573,7 +574,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 594007582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.53151, y: 1.4785752, z: -0.11766019}
+  m_LocalPosition: {x: -0.01, y: 0.04, z: -0.11766019}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -592,6 +593,103 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebc8e67c458e16640a20a01c0aa4a959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CardTurnedAudio: {fileID: 8300000, guid: 9a341893ddf953e45be809e52e381969, type: 3}
+--- !u!82 &594007585
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594007582}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 9a341893ddf953e45be809e52e381969, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.7
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &595787250
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,7 +702,7 @@ GameObject:
   - component: {fileID: 595787251}
   m_Layer: 0
   m_Name: Circle_8
-  m_TagString: Untagged
+  m_TagString: CardPositionReference
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -688,7 +786,7 @@ GameObject:
   - component: {fileID: 658541512}
   m_Layer: 0
   m_Name: Circle_7
-  m_TagString: Untagged
+  m_TagString: CardPositionReference
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -772,7 +870,7 @@ GameObject:
   - component: {fileID: 698727538}
   m_Layer: 0
   m_Name: Circle_11
-  m_TagString: Untagged
+  m_TagString: CardPositionReference
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -856,7 +954,7 @@ GameObject:
   - component: {fileID: 804346155}
   m_Layer: 0
   m_Name: Circle_12
-  m_TagString: Untagged
+  m_TagString: CardPositionReference
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -940,7 +1038,7 @@ GameObject:
   - component: {fileID: 1137829230}
   m_Layer: 0
   m_Name: Circle_4
-  m_TagString: Untagged
+  m_TagString: CardPositionReference
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1024,7 +1122,7 @@ GameObject:
   - component: {fileID: 1270978174}
   m_Layer: 0
   m_Name: Circle_1
-  m_TagString: Untagged
+  m_TagString: CardPositionReference
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1108,7 +1206,7 @@ GameObject:
   - component: {fileID: 1508782371}
   m_Layer: 0
   m_Name: Circle_10
-  m_TagString: Untagged
+  m_TagString: CardPositionReference
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1192,7 +1290,7 @@ GameObject:
   - component: {fileID: 1617711204}
   m_Layer: 0
   m_Name: Circle_3
-  m_TagString: Untagged
+  m_TagString: CardPositionReference
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1309,7 +1407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2523452862257948708, guid: 5f34f6d12ab2b1b4cb1aa67a421b7f1d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.058401972
+      value: -0.11
       objectReference: {fileID: 0}
     - target: {fileID: 2523452862257948708, guid: 5f34f6d12ab2b1b4cb1aa67a421b7f1d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1374,7 +1472,7 @@ GameObject:
   - component: {fileID: 2005465860}
   m_Layer: 0
   m_Name: Circle_5
-  m_TagString: Untagged
+  m_TagString: CardPositionReference
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
