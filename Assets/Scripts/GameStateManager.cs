@@ -8,9 +8,12 @@ public class GameStateManager : MonoBehaviour
 	private CardModel SecondCard;
 	private bool IsHypeActive;
 
+	[SerializeField]
+	private AudioClip CardTurnedAudio;
+
 	// Start is called before the first frame update
 	void Start()
-    {
+	{
 		InitializeGameState();
 	}
 
@@ -46,6 +49,7 @@ public class GameStateManager : MonoBehaviour
 		{
 			// TODO handle same card
 			Debug.LogWarning("[GAME WARNING] Same card selected");
+			return;
 		}
 
 		FirstCard = card;
@@ -71,5 +75,11 @@ public class GameStateManager : MonoBehaviour
 	private bool EvaluateMatch()
 	{
 		return FirstCard.CardSign == SecondCard.CardSign;
+	}
+
+	public void PlayCardTurnSound()
+	{
+		var audioSource = transform.GetComponent<AudioSource>();
+		audioSource.PlayOneShot(CardTurnedAudio);
 	}
 }

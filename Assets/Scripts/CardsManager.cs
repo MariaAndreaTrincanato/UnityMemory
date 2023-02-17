@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using Assets.Scripts.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,11 +7,12 @@ using static Assets.Scripts.Helpers.Enums;
 
 public class CardsManager : MonoBehaviour
 {
-	private Dictionary<CardSignsEnum, int> signs;    
+	private Dictionary<CardSignsEnum, int> SignsDictionary;
+	private Dictionary<int, CardSignsEnum> SignIndexesDictionary;
 
-    void Start()
-    {
-		signs = new()
+	void Start()
+	{
+		SignsDictionary = new()
 		{
 			{ CardSignsEnum.Spades, 0 },
 			{ CardSignsEnum.Clubs, 0 },
@@ -25,11 +27,13 @@ public class CardsManager : MonoBehaviour
 
 	private void GenerateCards()
 	{
-		var referencesGameObjects = GameObject.FindGameObjectsWithTag("Reference").ToList();
+		var referencesGameObjects = GameObject.FindGameObjectsWithTag("CardPositionReference").ToList();
 		var referenceCard = GameObject.FindGameObjectWithTag("ReferenceCardPrefab");
 
 		for (int i = 0; i < referencesGameObjects.Count; i++)
 		{
+			var details = ComputeDetails();
+			SignIndexesDictionary.Add(i, details.CardSign);
 			var currentCard = Instantiate(referenceCard);
 			currentCard.transform.SetParent(transform);
 		}
@@ -37,11 +41,9 @@ public class CardsManager : MonoBehaviour
 
 	private CardModel ComputeDetails()
 	{
-		CardSignsEnum sign = CardSignsEnum.Spades;
+		CardSignsEnum sign = CardSignsService.GetNewCardSign(SignsDictionary, SignIndexesDictionary);
 
-		// TODO: choice algorithm
-
-		var currentSignValue = signs.GetValueOrDefault(sign);
+		var currentSignValue = SignsDictionary.GetValueOrDefault(sign);
 
 		return new CardModel
 		{

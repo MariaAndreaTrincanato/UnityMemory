@@ -43,6 +43,7 @@ public class Card : MonoBehaviour
 	{
 		if (GameStateManager != null) 
 		{
+			GameStateManager.PlayCardTurnSound();
 			Details.GameObject = transform.gameObject;
 			GameStateManager.SelectCard(Details);
 			TurnCard();
