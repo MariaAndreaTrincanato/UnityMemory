@@ -8,19 +8,26 @@ using static Assets.Scripts.Helpers.Enums;
 public class CardsManager : MonoBehaviour
 {
 	private List<CardPositionModel> CardPositions;
+	private List<GameObject> ReferencePositions;
+	private GameObject ReferenceCard;
 
 	void Start()
 	{
-		CardPositions = new();
+		ReferencePositions = GameObject.FindGameObjectsWithTag("CardPositionReference").ToList();
+		ReferenceCard = GameObject.FindGameObjectWithTag("ReferenceCardPrefab");
+	}
+
+	public void ResetGame()
+	{
+		CardPositions.Clear();
+		ReferenceCard.SetActive(true);
+		ReferencePositions.ForEach(o => o.SetActive(true));
 		GenerateCards();
 	}
 
 	private void GenerateCards()
-	{
-		var referencesGameObjects = GameObject.FindGameObjectsWithTag("CardPositionReference").ToList();
-		var referenceCard = GameObject.FindGameObjectWithTag("ReferenceCardPrefab");
-
-		for (int i = 0; i < referencesGameObjects.Count; i++)
+	{	
+		for (int i = 0; i < ReferencePositions.Count; i++)
 		{
 			var details = ComputeDetails();
 			CardPositions.Add(new CardPositionModel
@@ -29,8 +36,8 @@ public class CardsManager : MonoBehaviour
 				Index = i
 			});
 
-			Vector3 currentReferencePosition = referencesGameObjects[i].transform.position;
-			var currentCard = Instantiate(referenceCard);
+			Vector3 currentReferencePosition = ReferencePositions[i].transform.position;
+			var currentCard = Instantiate(ReferenceCard);
 			currentCard.transform.SetParent(transform);
 			currentCard.transform.position = currentReferencePosition;
 
@@ -40,17 +47,15 @@ public class CardsManager : MonoBehaviour
 			}
 		}
 
-		referenceCard.SetActive(false);
+		ReferenceCard.SetActive(false);
+		ReferencePositions.ForEach(o => o.SetActive(false));
 	}
 
 	private CardModel ComputeDetails()
 	{
 		CardSignsEnum? sign = CardSignsService.GetNewCardSign(CardPositions);
-
 		if (sign == null)
 		{
-			// TODO handle error
-			Debug.LogWarning("[WARNING] card model is null");
 			return null;
 		}
 

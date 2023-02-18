@@ -1,18 +1,28 @@
+using Assets.Scripts.Helpers;
 using Assets.Scripts.Models;
+using System.Collections;
 using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
 {
 	private int Points;
-	private CardModel FirstCard;
-	private CardModel SecondCard;
 	private bool IsHypeActive;
+	private bool IsGameOver;
+	private int RemainingCards;
+	private int TotalCardsNumber;
 
+	[HideInInspector]
+	public string Message;
+
+	[HideInInspector]
+	public CardModel FirstCard;
+	[HideInInspector]
+	public CardModel SecondCard;
+	
 	[SerializeField]
 	private AudioClip CardTurnedAudio;
 
-	// Start is called before the first frame update
-	void Start()
+	void Awake()
 	{
 		InitializeGameState();
 	}
@@ -23,14 +33,26 @@ public class GameStateManager : MonoBehaviour
 		FirstCard = null;
 		SecondCard = null;
 		IsHypeActive = false;
+		Message = string.Empty;
+		IsGameOver = false;
+		TotalCardsNumber = 12;
+		RemainingCards = TotalCardsNumber;
 	}
 
 	private void ResetSelectedCards()
 	{
-		FirstCard = null;
-		SecondCard = null;
+		if (FirstCard.GameObject.TryGetComponent<Card>(out var firstCardScript)) 
+		{
+			firstCardScript.TurnCard();
+			FirstCard = null;
+		}
 
-		// TODO trigger turn
+		var secondCardScript = SecondCard.GameObject.GetComponent<Card>();
+		if (secondCardScript != null) 
+		{ 
+			secondCardScript.TurnCard();
+			SecondCard = null;
+		}
 	}
 
 	public void SelectCard(CardModel card)
@@ -45,31 +67,26 @@ public class GameStateManager : MonoBehaviour
 
 	public void SelectFirstCard(CardModel card)
 	{
-		if (FirstCard != null)
-		{
-			// TODO handle same card
-			Debug.LogWarning("[GAME WARNING] Same card selected");
-			return;
-		}
-
 		FirstCard = card;
 	}
 
 	public void SelectSecondCard(CardModel card)
 	{
 		SecondCard = card;
-
+		
 		bool isMatch = EvaluateMatch();
 		if (isMatch)
 		{
 			Points++;
 			IsHypeActive = true;
-			ResetSelectedCards();
+
+			StartCoroutine(WaitToPlayMatchParticle(1f));
+			StartCoroutine(WaitToRemove(1.5f));
 			return;
 		}
 
 		IsHypeActive = false;
-		ResetSelectedCards();
+		StartCoroutine(WaitToTurn(1f));
 	}
 
 	private bool EvaluateMatch()
@@ -79,7 +96,63 @@ public class GameStateManager : MonoBehaviour
 
 	public void PlayCardTurnSound()
 	{
-		var audioSource = transform.GetComponent<AudioSource>();
-		audioSource.PlayOneShot(CardTurnedAudio);
+		if (transform.TryGetComponent<AudioSource>(out var audioSource)) 
+		{
+			audioSource.PlayOneShot(CardTurnedAudio);
+		}
 	}
+
+	private void HideMatchedCards()
+	{
+		FirstCard.GameObject.SetActive(false);
+		SecondCard.GameObject.SetActive(false);
+		FirstCard = null;
+		SecondCard = null;
+		Mathf.Clamp(RemainingCards -= 2, 0, TotalCardsNumber);
+	}
+
+	public void UpdateWarningMessage(string message)
+	{
+		Message = message;
+	}
+
+	private void EvaluateGameOver()
+	{
+		IsGameOver = RemainingCards == 0;
+		if (IsGameOver) 
+		{ 
+			// TODO: Notify UI
+		}
+	}
+
+	#region coroutines
+	public IEnumerator WaitToTurn(float seconds)
+	{
+		yield return new WaitForSeconds(seconds);
+		ResetSelectedCards();
+		EvaluateGameOver();
+	}
+
+	public IEnumerator WaitToRemove(float seconds)
+	{
+		yield return new WaitForSeconds(seconds);
+		HideMatchedCards();
+		EvaluateGameOver();
+	}
+
+	public IEnumerator WaitToPlayMatchParticle(float seconds)
+	{
+		yield return new WaitForSeconds(seconds);
+		if (SecondCard.GameObject.TryGetComponent<Card>(out var secondCardScript))
+		{
+			secondCardScript.ShowMatchEffect();
+		}
+	}
+
+	public IEnumerator WaitToHideMessage(float seconds)
+	{
+		yield return new WaitForSeconds(seconds);
+		//HideMatchedCards();
+	}
+	#endregion
 }

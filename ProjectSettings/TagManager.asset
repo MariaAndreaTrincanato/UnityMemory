@@ -9,6 +9,8 @@ TagManager:
   - GameStateManager
   - ReferenceCardPrefab
   - CardPositionReference
+  - CardsContainer
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -45,4 +47,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Sprites
+    uniqueID: 3178137107
+    locked: 0
+  - name: Particles
+    uniqueID: 1845476789
     locked: 0

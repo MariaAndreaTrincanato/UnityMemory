@@ -38,6 +38,31 @@ public class Card : MonoBehaviour
 		CardContentChild = transform.GetChild(0);
 	}
 
+	private void OnMouseDown()
+	{
+		if (GameStateManager != null && Details != null)
+		{
+			if (GameStateManager.FirstCard != null && GameStateManager.SecondCard != null)
+			{
+				return;
+			}
+
+			if (GameStateManager.FirstCard != null
+					&& GameStateManager.FirstCard.CardSign == Details.CardSign
+					&& GameStateManager.FirstCard.Id == Details.Id)
+			{
+				GameStateManager.UpdateWarningMessage("You cannot select the same card again");
+				Debug.LogWarning("[GAME WARNING] Same card selected");
+				return;
+			}
+
+			GameStateManager.PlayCardTurnSound();
+			Details.GameObject = transform.gameObject;
+			TurnCard();
+			GameStateManager.SelectCard(Details);
+		}
+	}
+
 	public void CreateCardDetails(CardModel details)
 	{
 		Details = details;
@@ -50,17 +75,6 @@ public class Card : MonoBehaviour
 		{
 			CardContentChild.Rotate(new Vector3(0, 1, 0), 90);
 			Details.IsTurned = !Details.IsTurned;
-		}
-	}
-
-	private void OnMouseDown()
-	{
-		if (GameStateManager != null) 
-		{
-			GameStateManager.PlayCardTurnSound();
-			Details.GameObject = transform.gameObject;
-			GameStateManager.SelectCard(Details);
-			TurnCard();
 		}
 	}
 
@@ -91,6 +105,14 @@ public class Card : MonoBehaviour
 				default:
 					break;
 			}
+		}
+	}
+
+	public void ShowMatchEffect()
+	{
+		if (gameObject.TryGetComponent<ParticleSystem>(out var particleSystem)) 
+		{
+			particleSystem.Play();
 		}
 	}
 }

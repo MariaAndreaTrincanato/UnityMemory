@@ -11,6 +11,43 @@
         "projectPath": "D:\\Unity3D\\Projects\\Memory\\Assembly-CSharp.csproj",
         "frameworks": {
           "net471": {
+            "projectReferences": {
+              "D:\\Unity3D\\Projects\\Memory\\CFXREditor.csproj": {
+                "projectPath": "D:\\Unity3D\\Projects\\Memory\\CFXREditor.csproj"
+              },
+              "D:\\Unity3D\\Projects\\Memory\\CFXRRuntime.csproj": {
+                "projectPath": "D:\\Unity3D\\Projects\\Memory\\CFXRRuntime.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net471": {}
+      }
+    },
+    "D:\\Unity3D\\Projects\\Memory\\CFXREditor.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Unity3D\\Projects\\Memory\\CFXREditor.csproj",
+        "projectName": "CFXREditor",
+        "projectPath": "D:\\Unity3D\\Projects\\Memory\\CFXREditor.csproj",
+        "frameworks": {
+          "net471": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net471": {}
+      }
+    },
+    "D:\\Unity3D\\Projects\\Memory\\CFXRRuntime.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Unity3D\\Projects\\Memory\\CFXRRuntime.csproj",
+        "projectName": "CFXRRuntime",
+        "projectPath": "D:\\Unity3D\\Projects\\Memory\\CFXRRuntime.csproj",
+        "frameworks": {
+          "net471": {
             "projectReferences": {}
           }
         }

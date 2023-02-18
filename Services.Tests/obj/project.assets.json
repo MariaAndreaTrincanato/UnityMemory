@@ -1805,11 +1805,33 @@
       },
       "Assembly-CSharp/1.0.0": {
         "type": "project",
+        "dependencies": {
+          "CFXREditor": "1.0.0",
+          "CFXRRuntime": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Assembly-CSharp.dll": {}
         },
         "runtime": {
           "bin/placeholder/Assembly-CSharp.dll": {}
+        }
+      },
+      "CFXREditor/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/CFXREditor.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CFXREditor.dll": {}
+        }
+      },
+      "CFXRRuntime/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/CFXRRuntime.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CFXRRuntime.dll": {}
         }
       }
     }
@@ -6112,6 +6134,16 @@
       "type": "project",
       "path": "../Assembly-CSharp.csproj",
       "msbuildProject": "../Assembly-CSharp.csproj"
+    },
+    "CFXREditor/1.0.0": {
+      "type": "project",
+      "path": "../CFXREditor.csproj",
+      "msbuildProject": "../CFXREditor.csproj"
+    },
+    "CFXRRuntime/1.0.0": {
+      "type": "project",
+      "path": "../CFXRRuntime.csproj",
+      "msbuildProject": "../CFXRRuntime.csproj"
     }
   },
   "projectFileDependencyGroups": {
