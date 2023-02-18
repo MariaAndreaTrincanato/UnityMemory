@@ -6,6 +6,26 @@ public class Card : MonoBehaviour
 {
 	private CardModel Details;
 	private GameStateManager GameStateManager;
+	private Transform CardContentChild;
+
+	[SerializeField]
+	private Sprite HeartsSprite;
+
+	[SerializeField]
+	private Sprite DiamondsSprite;
+
+	[SerializeField]
+	private Sprite CirclesSprite;
+
+	[SerializeField]
+	private Sprite SpadesSprite;
+
+	[SerializeField]
+	private Sprite ClubsSprite;
+
+	[SerializeField]
+	private Sprite StarsSprite;
+
 
 	private void Awake()
 	{
@@ -14,27 +34,21 @@ public class Card : MonoBehaviour
 		{
 			GameStateManager = stateReferenceGameObject.GetComponent<GameStateManager>();
 		}
-
-		CreateCardDetails(new CardModel
-		{
-			Id = "hearts_1",
-			IsTurned = false,
-			CardSign = CardSignsEnum.Hearts,
-			GameObject = null
-		});
+		Details = new();
+		CardContentChild = transform.GetChild(0);
 	}
 
 	public void CreateCardDetails(CardModel details)
 	{
 		Details = details;
+		AssignSprite(details.CardSign);
 	}
 
 	public void TurnCard()
 	{
-		var cardItemToRotate = transform.GetChild(0);
-		if (cardItemToRotate != null)
+		if (CardContentChild != null)
 		{
-			cardItemToRotate.Rotate(new Vector3(0, 1, 0), 90);
+			CardContentChild.Rotate(new Vector3(0, 1, 0), 90);
 			Details.IsTurned = !Details.IsTurned;
 		}
 	}
@@ -47,6 +61,36 @@ public class Card : MonoBehaviour
 			Details.GameObject = transform.gameObject;
 			GameStateManager.SelectCard(Details);
 			TurnCard();
+		}
+	}
+
+	private void AssignSprite(CardSignsEnum sign)
+	{
+		if (CardContentChild != null && CardContentChild.gameObject.TryGetComponent<SpriteRenderer>(out var spriteRenderer))
+		{
+			switch(sign) 
+			{
+				case CardSignsEnum.Spades:
+					spriteRenderer.sprite = SpadesSprite; 
+					break;
+				case CardSignsEnum.Clubs:
+					spriteRenderer.sprite = ClubsSprite;
+					break;
+				case CardSignsEnum.Stars:
+					spriteRenderer.sprite = StarsSprite;
+					break;
+				case CardSignsEnum.Hearts:
+					spriteRenderer.sprite = HeartsSprite;
+					break;
+				case CardSignsEnum.Diamonds:
+					spriteRenderer.sprite = DiamondsSprite;
+					break;
+				case CardSignsEnum.Circles:
+					spriteRenderer.sprite = CirclesSprite;
+					break;
+				default:
+					break;
+			}
 		}
 	}
 }

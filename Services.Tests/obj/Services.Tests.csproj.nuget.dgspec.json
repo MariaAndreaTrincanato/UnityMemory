@@ -1,14 +1,14 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Unity3D\\UnityMemory\\Services.Tests\\Services.Tests.csproj": {}
+    "D:\\Unity3D\\Projects\\Memory\\Services.Tests\\Services.Tests.csproj": {}
   },
   "projects": {
-    "D:\\Unity3D\\UnityMemory\\Assembly-CSharp.csproj": {
+    "D:\\Unity3D\\Projects\\Memory\\Assembly-CSharp.csproj": {
       "restore": {
-        "projectUniqueName": "D:\\Unity3D\\UnityMemory\\Assembly-CSharp.csproj",
+        "projectUniqueName": "D:\\Unity3D\\Projects\\Memory\\Assembly-CSharp.csproj",
         "projectName": "Assembly-CSharp",
-        "projectPath": "D:\\Unity3D\\UnityMemory\\Assembly-CSharp.csproj",
+        "projectPath": "D:\\Unity3D\\Projects\\Memory\\Assembly-CSharp.csproj",
         "frameworks": {
           "net471": {
             "projectReferences": {}
@@ -19,21 +19,23 @@
         "net471": {}
       }
     },
-    "D:\\Unity3D\\UnityMemory\\Services.Tests\\Services.Tests.csproj": {
+    "D:\\Unity3D\\Projects\\Memory\\Services.Tests\\Services.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Unity3D\\UnityMemory\\Services.Tests\\Services.Tests.csproj",
+        "projectUniqueName": "D:\\Unity3D\\Projects\\Memory\\Services.Tests\\Services.Tests.csproj",
         "projectName": "Services.Tests",
-        "projectPath": "D:\\Unity3D\\UnityMemory\\Services.Tests\\Services.Tests.csproj",
+        "projectPath": "D:\\Unity3D\\Projects\\Memory\\Services.Tests\\Services.Tests.csproj",
         "packagesPath": "C:\\Users\\trinc\\.nuget\\packages\\",
-        "outputPath": "D:\\Unity3D\\UnityMemory\\Services.Tests\\obj\\",
+        "outputPath": "D:\\Unity3D\\Projects\\Memory\\Services.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Users\\trinc\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder"
+          "C:\\Users\\trinc\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\trinc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Users\\trinc\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -47,8 +49,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Unity3D\\UnityMemory\\Assembly-CSharp.csproj": {
-                "projectPath": "D:\\Unity3D\\UnityMemory\\Assembly-CSharp.csproj"
+              "D:\\Unity3D\\Projects\\Memory\\Assembly-CSharp.csproj": {
+                "projectPath": "D:\\Unity3D\\Projects\\Memory\\Assembly-CSharp.csproj"
               }
             }
           }
@@ -65,7 +67,7 @@
           "dependencies": {
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[17.3.2, )"
+              "version": "[17.1.0, )"
             },
             "coverlet.collector": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -75,13 +77,13 @@
             },
             "xunit": {
               "target": "Package",
-              "version": "[2.4.2, )"
+              "version": "[2.4.1, )"
             },
             "xunit.runner.visualstudio": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[2.4.5, )"
+              "version": "[2.4.3, )"
             }
           },
           "imports": [

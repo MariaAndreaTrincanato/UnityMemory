@@ -7,21 +7,11 @@ using static Assets.Scripts.Helpers.Enums;
 
 public class CardsManager : MonoBehaviour
 {
-	private Dictionary<CardSignsEnum, int> SignsDictionary;
-	private Dictionary<int, CardSignsEnum> SignIndexesDictionary;
+	private List<CardPositionModel> CardPositions;
 
 	void Start()
 	{
-		SignsDictionary = new()
-		{
-			{ CardSignsEnum.Spades, 0 },
-			{ CardSignsEnum.Clubs, 0 },
-			{ CardSignsEnum.Hearts, 0 },
-			{ CardSignsEnum.Diamonds, 0 },
-			{ CardSignsEnum.Circles, 0 },
-			{ CardSignsEnum.Stars, 0 }
-		};
-
+		CardPositions = new();
 		GenerateCards();
 	}
 
@@ -33,22 +23,39 @@ public class CardsManager : MonoBehaviour
 		for (int i = 0; i < referencesGameObjects.Count; i++)
 		{
 			var details = ComputeDetails();
-			SignIndexesDictionary.Add(i, details.CardSign);
+			CardPositions.Add(new CardPositionModel
+			{
+				CardSign = details.CardSign,
+				Index = i
+			});
+
+			Vector3 currentReferencePosition = referencesGameObjects[i].transform.position;
 			var currentCard = Instantiate(referenceCard);
+			currentCard.transform.position = currentReferencePosition;
 			currentCard.transform.SetParent(transform);
+
+			if (currentCard.TryGetComponent<Card>(out var cardScriptReference)) 
+			{
+				cardScriptReference.CreateCardDetails(details);
+			}
 		}
 	}
 
 	private CardModel ComputeDetails()
 	{
-		CardSignsEnum sign = CardSignsService.GetNewCardSign(SignsDictionary, SignIndexesDictionary);
+		CardSignsEnum? sign = CardSignsService.GetNewCardSign(CardPositions);
 
-		var currentSignValue = SignsDictionary.GetValueOrDefault(sign);
+		if (sign == null)
+		{
+			// TODO handle error
+			Debug.LogWarning("[WARNING] card model is null");
+			return null;
+		}
 
 		return new CardModel
 		{
-			CardSign = sign,
-			//Id = $"{sign.GetDescription()}_{currentSignValue}",
+			CardSign = sign.Value,
+			Id = $"{sign.Value.GetDescription()}_{CardPositions.Where(x => x.CardSign == sign).Count()}",
 			IsTurned = false,
 			GameObject = null
 		};

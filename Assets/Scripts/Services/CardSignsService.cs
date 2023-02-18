@@ -1,19 +1,57 @@
-﻿using System.Collections.Generic;
+﻿using Assets.Scripts.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using static Assets.Scripts.Helpers.Enums;
 
 namespace Assets.Scripts
 {
 	public static class CardSignsService
 	{
-		public static CardSignsEnum GetNewCardSign(Dictionary<CardSignsEnum, int> usedSignsDict, Dictionary<int, CardSignsEnum> signIndexesDict)
+		private static IEnumerable<CardSignsEnum> SignsList = new List<CardSignsEnum>
 		{
-			// TODO
+			CardSignsEnum.Diamonds,
+			CardSignsEnum.Spades,
+			CardSignsEnum.Clubs,
+			CardSignsEnum.Hearts,
+			CardSignsEnum.Circles,
+			CardSignsEnum.Stars
+		};
 
-			// 1. Use signs with 0 cards assigned
+		public static CardSignsEnum? GetNewCardSign(List<CardPositionModel> models)
+		{
+			var currentSign = GetRandomSign();
+			bool hasMaxItems = models.Where(x => x.CardSign == currentSign).Count() == 2;
 
-			// 2. Use signs with 1 card assigned, ensure distance
+			while (models.Count < 12 && hasMaxItems)
+			{
+				currentSign = GetRandomSign();
+				hasMaxItems = models.Where(x => x.CardSign == currentSign).Count() == 2;
+			}
 
-			return CardSignsEnum.Hearts;
+			return currentSign;
+		}
+
+		private static CardSignsEnum GetRandomSign()
+		{
+			Random rnd = new();
+			int randomIndex = rnd.Next(0, 6);
+			return SignsList.ElementAt(randomIndex);
+		}
+
+		public static void ShuffleMe<T>(this IList<T> list)
+		{
+			Random random = new();
+			//int n = list.Count;
+
+			for (int i = list.Count - 1; i > 1; i--)
+			{
+				int rnd = random.Next(i + 1);
+
+				T value = list[rnd];
+				list[rnd] = list[i];
+				list[i] = value;
+			}
 		}
 	}
 }
