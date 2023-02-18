@@ -8,7 +8,7 @@ namespace Assets.Scripts
 {
 	public static class CardSignsService
 	{
-		private static IEnumerable<CardSignsEnum> SignsList = new List<CardSignsEnum>
+		private static readonly IEnumerable<CardSignsEnum> SignsList = new List<CardSignsEnum>
 		{
 			CardSignsEnum.Diamonds,
 			CardSignsEnum.Spades,

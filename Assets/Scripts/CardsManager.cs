@@ -31,14 +31,16 @@ public class CardsManager : MonoBehaviour
 
 			Vector3 currentReferencePosition = referencesGameObjects[i].transform.position;
 			var currentCard = Instantiate(referenceCard);
-			currentCard.transform.position = currentReferencePosition;
 			currentCard.transform.SetParent(transform);
+			currentCard.transform.position = currentReferencePosition;
 
 			if (currentCard.TryGetComponent<Card>(out var cardScriptReference)) 
 			{
 				cardScriptReference.CreateCardDetails(details);
 			}
 		}
+
+		referenceCard.SetActive(false);
 	}
 
 	private CardModel ComputeDetails()
