@@ -121,7 +121,32 @@ public class GameStateManager : MonoBehaviour
 		IsGameOver = RemainingCards == 0;
 		if (IsGameOver) 
 		{ 
-			// TODO: Notify UI
+			var cardsContainer = GameObject.FindGameObjectWithTag("CardsContainer");
+			if (cardsContainer != null && cardsContainer.TryGetComponent<CardsManager>(out var cardsManagerScript))
+			{
+				cardsManagerScript.HideGameRefElements();
+			}
+
+			// show game over screen based on points and/or timeout
+		}
+	}
+
+	public void HideGameElements()
+	{
+		var cardsContainer = GameObject.FindGameObjectWithTag("CardsContainer");
+		if (cardsContainer != null && cardsContainer.TryGetComponent<CardsManager>(out var cardsManagerScript))
+		{
+			cardsManagerScript.HideGameRefElements();
+		}
+	}
+
+	public void StartGame()
+	{
+		InitializeGameState();
+		var cardsContainer = GameObject.FindGameObjectWithTag("CardsContainer");
+		if (cardsContainer != null && cardsContainer.TryGetComponent<CardsManager>(out var cardsManagerScript))
+		{
+			cardsManagerScript.ResetGame();
 		}
 	}
 

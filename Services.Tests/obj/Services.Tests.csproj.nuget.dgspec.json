@@ -1,22 +1,22 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Unity3D\\Projects\\Memory\\Services.Tests\\Services.Tests.csproj": {}
+    "D:\\Unity3D\\UnityMemory\\Services.Tests\\Services.Tests.csproj": {}
   },
   "projects": {
-    "D:\\Unity3D\\Projects\\Memory\\Assembly-CSharp.csproj": {
+    "D:\\Unity3D\\UnityMemory\\Assembly-CSharp.csproj": {
       "restore": {
-        "projectUniqueName": "D:\\Unity3D\\Projects\\Memory\\Assembly-CSharp.csproj",
+        "projectUniqueName": "D:\\Unity3D\\UnityMemory\\Assembly-CSharp.csproj",
         "projectName": "Assembly-CSharp",
-        "projectPath": "D:\\Unity3D\\Projects\\Memory\\Assembly-CSharp.csproj",
+        "projectPath": "D:\\Unity3D\\UnityMemory\\Assembly-CSharp.csproj",
         "frameworks": {
           "net471": {
             "projectReferences": {
-              "D:\\Unity3D\\Projects\\Memory\\CFXREditor.csproj": {
-                "projectPath": "D:\\Unity3D\\Projects\\Memory\\CFXREditor.csproj"
+              "D:\\Unity3D\\UnityMemory\\CFXREditor.csproj": {
+                "projectPath": "D:\\Unity3D\\UnityMemory\\CFXREditor.csproj"
               },
-              "D:\\Unity3D\\Projects\\Memory\\CFXRRuntime.csproj": {
-                "projectPath": "D:\\Unity3D\\Projects\\Memory\\CFXRRuntime.csproj"
+              "D:\\Unity3D\\UnityMemory\\CFXRRuntime.csproj": {
+                "projectPath": "D:\\Unity3D\\UnityMemory\\CFXRRuntime.csproj"
               }
             }
           }
@@ -26,11 +26,11 @@
         "net471": {}
       }
     },
-    "D:\\Unity3D\\Projects\\Memory\\CFXREditor.csproj": {
+    "D:\\Unity3D\\UnityMemory\\CFXREditor.csproj": {
       "restore": {
-        "projectUniqueName": "D:\\Unity3D\\Projects\\Memory\\CFXREditor.csproj",
+        "projectUniqueName": "D:\\Unity3D\\UnityMemory\\CFXREditor.csproj",
         "projectName": "CFXREditor",
-        "projectPath": "D:\\Unity3D\\Projects\\Memory\\CFXREditor.csproj",
+        "projectPath": "D:\\Unity3D\\UnityMemory\\CFXREditor.csproj",
         "frameworks": {
           "net471": {
             "projectReferences": {}
@@ -41,11 +41,11 @@
         "net471": {}
       }
     },
-    "D:\\Unity3D\\Projects\\Memory\\CFXRRuntime.csproj": {
+    "D:\\Unity3D\\UnityMemory\\CFXRRuntime.csproj": {
       "restore": {
-        "projectUniqueName": "D:\\Unity3D\\Projects\\Memory\\CFXRRuntime.csproj",
+        "projectUniqueName": "D:\\Unity3D\\UnityMemory\\CFXRRuntime.csproj",
         "projectName": "CFXRRuntime",
-        "projectPath": "D:\\Unity3D\\Projects\\Memory\\CFXRRuntime.csproj",
+        "projectPath": "D:\\Unity3D\\UnityMemory\\CFXRRuntime.csproj",
         "frameworks": {
           "net471": {
             "projectReferences": {}
@@ -56,23 +56,21 @@
         "net471": {}
       }
     },
-    "D:\\Unity3D\\Projects\\Memory\\Services.Tests\\Services.Tests.csproj": {
+    "D:\\Unity3D\\UnityMemory\\Services.Tests\\Services.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Unity3D\\Projects\\Memory\\Services.Tests\\Services.Tests.csproj",
+        "projectUniqueName": "D:\\Unity3D\\UnityMemory\\Services.Tests\\Services.Tests.csproj",
         "projectName": "Services.Tests",
-        "projectPath": "D:\\Unity3D\\Projects\\Memory\\Services.Tests\\Services.Tests.csproj",
+        "projectPath": "D:\\Unity3D\\UnityMemory\\Services.Tests\\Services.Tests.csproj",
         "packagesPath": "C:\\Users\\trinc\\.nuget\\packages\\",
-        "outputPath": "D:\\Unity3D\\Projects\\Memory\\Services.Tests\\obj\\",
+        "outputPath": "D:\\Unity3D\\UnityMemory\\Services.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Users\\trinc\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Users\\trinc\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder"
         ],
         "configFilePaths": [
           "C:\\Users\\trinc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Users\\trinc\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -86,8 +84,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Unity3D\\Projects\\Memory\\Assembly-CSharp.csproj": {
-                "projectPath": "D:\\Unity3D\\Projects\\Memory\\Assembly-CSharp.csproj"
+              "D:\\Unity3D\\UnityMemory\\Assembly-CSharp.csproj": {
+                "projectPath": "D:\\Unity3D\\UnityMemory\\Assembly-CSharp.csproj"
               }
             }
           }
@@ -104,7 +102,7 @@
           "dependencies": {
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[17.1.0, )"
+              "version": "[17.3.2, )"
             },
             "coverlet.collector": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -114,13 +112,13 @@
             },
             "xunit": {
               "target": "Package",
-              "version": "[2.4.1, )"
+              "version": "[2.4.2, )"
             },
             "xunit.runner.visualstudio": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[2.4.3, )"
+              "version": "[2.4.5, )"
             }
           },
           "imports": [

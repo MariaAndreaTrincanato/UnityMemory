@@ -11,18 +11,31 @@ public class CardsManager : MonoBehaviour
 	private List<GameObject> ReferencePositions;
 	private GameObject ReferenceCard;
 
-	void Start()
+	void Awake()
 	{
 		ReferencePositions = GameObject.FindGameObjectsWithTag("CardPositionReference").ToList();
 		ReferenceCard = GameObject.FindGameObjectWithTag("ReferenceCardPrefab");
+		SetReferenceCardTransparentColors(ReferenceCard);
+	}
+
+	public void HideGameRefElements()
+	{
+		ReferencePositions = GameObject.FindGameObjectsWithTag("CardPositionReference").ToList();
+		ReferenceCard = GameObject.FindGameObjectWithTag("ReferenceCardPrefab");
+		SetReferenceCardTransparentColors(ReferenceCard);
+		//ReferencePositions.ForEach(o => o.SetActive(false));
+		//ReferenceCard.SetActive(false);
 	}
 
 	public void ResetGame()
 	{
-		CardPositions.Clear();
-		ReferenceCard.SetActive(true);
-		ReferencePositions.ForEach(o => o.SetActive(true));
-		GenerateCards();
+		CardPositions?.Clear();
+		ReferenceCard?.SetActive(true);
+		ReferencePositions?.ForEach(o => o.SetActive(true));
+		if (ReferenceCard != null && ReferencePositions != null)
+		{
+			GenerateCards();
+		}
 	}
 
 	private void GenerateCards()
@@ -47,8 +60,8 @@ public class CardsManager : MonoBehaviour
 			}
 		}
 
-		ReferenceCard.SetActive(false);
-		ReferencePositions.ForEach(o => o.SetActive(false));
+		ReferenceCard?.SetActive(false);
+		ReferencePositions?.ForEach(o => o.SetActive(false));
 	}
 
 	private CardModel ComputeDetails()
@@ -66,5 +79,24 @@ public class CardsManager : MonoBehaviour
 			IsTurned = false,
 			GameObject = null
 		};
+	}
+
+	private void SetReferenceCardTransparentColors(GameObject referenceCard)
+	{
+		if (referenceCard != null) 
+		{
+			var front = referenceCard.transform.GetChild(0);
+			var back = referenceCard.transform.GetChild(0);
+
+			if (back.TryGetComponent<SpriteRenderer>(out var backSpriteRenderer))
+			{
+				backSpriteRenderer.color = Color.clear;
+			}
+
+			if (front.TryGetComponent<SpriteRenderer>(out var frontSpriteRenderer))
+			{
+				frontSpriteRenderer.color = Color.clear;
+			}
+		}
 	}
 }

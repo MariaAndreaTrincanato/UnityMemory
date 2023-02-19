@@ -11,6 +11,11 @@ TagManager:
   - CardPositionReference
   - CardsContainer
   - FxTemporaire
+  - PlayButton
+  - QuitButton
+  - SettingsButton
+  - CreditsButton
+  - AppName
   layers:
   - Default
   - TransparentFX
