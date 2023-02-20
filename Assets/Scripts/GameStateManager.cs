@@ -127,7 +127,8 @@ public class GameStateManager : MonoBehaviour
 				cardsManagerScript.HideGameRefElements();
 			}
 
-			// show game over screen based on points and/or timeout
+			//TODO: show game over screen based on points and/or timeout
+			StartCoroutine(WaitToRestartGame(2));
 		}
 	}
 
@@ -147,6 +148,16 @@ public class GameStateManager : MonoBehaviour
 		if (cardsContainer != null && cardsContainer.TryGetComponent<CardsManager>(out var cardsManagerScript))
 		{
 			cardsManagerScript.ResetGame();
+		}
+	}
+
+	public void EndGame()
+	{
+		InitializeGameState();
+		var mainMenuObject = GameObject.FindGameObjectWithTag("MainMenu");
+		if ( mainMenuObject != null && mainMenuObject.TryGetComponent<MainMenu>(out var mainMenuScript))
+		{
+			mainMenuScript.InitializeGameUI();
 		}
 	}
 
@@ -178,6 +189,12 @@ public class GameStateManager : MonoBehaviour
 	{
 		yield return new WaitForSeconds(seconds);
 		//HideMatchedCards();
+	}
+
+	public IEnumerator WaitToRestartGame(float seconds)
+	{
+		yield return new WaitForSeconds(seconds);
+		EndGame();
 	}
 	#endregion
 }

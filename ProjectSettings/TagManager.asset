@@ -16,6 +16,7 @@ TagManager:
   - SettingsButton
   - CreditsButton
   - AppName
+  - MainMenu
   layers:
   - Default
   - TransparentFX

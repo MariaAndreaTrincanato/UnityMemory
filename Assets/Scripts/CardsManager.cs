@@ -13,9 +13,10 @@ public class CardsManager : MonoBehaviour
 
 	void Awake()
 	{
-		ReferencePositions = GameObject.FindGameObjectsWithTag("CardPositionReference").ToList();
-		ReferenceCard = GameObject.FindGameObjectWithTag("ReferenceCardPrefab");
-		SetReferenceCardTransparentColors(ReferenceCard);
+		CardPositions = new();
+		ReferencePositions = new();
+		ReferenceCard = new();
+		HideGameRefElements();
 	}
 
 	public void HideGameRefElements()
@@ -23,15 +24,11 @@ public class CardsManager : MonoBehaviour
 		ReferencePositions = GameObject.FindGameObjectsWithTag("CardPositionReference").ToList();
 		ReferenceCard = GameObject.FindGameObjectWithTag("ReferenceCardPrefab");
 		SetReferenceCardTransparentColors(ReferenceCard);
-		//ReferencePositions.ForEach(o => o.SetActive(false));
-		//ReferenceCard.SetActive(false);
 	}
 
 	public void ResetGame()
 	{
 		CardPositions?.Clear();
-		ReferenceCard?.SetActive(true);
-		ReferencePositions?.ForEach(o => o.SetActive(true));
 		if (ReferenceCard != null && ReferencePositions != null)
 		{
 			GenerateCards();
@@ -51,6 +48,7 @@ public class CardsManager : MonoBehaviour
 
 			Vector3 currentReferencePosition = ReferencePositions[i].transform.position;
 			var currentCard = Instantiate(ReferenceCard);
+			SetPlayableCardColor(currentCard);
 			currentCard.transform.SetParent(transform);
 			currentCard.transform.position = currentReferencePosition;
 
@@ -59,9 +57,6 @@ public class CardsManager : MonoBehaviour
 				cardScriptReference.CreateCardDetails(details);
 			}
 		}
-
-		ReferenceCard?.SetActive(false);
-		ReferencePositions?.ForEach(o => o.SetActive(false));
 	}
 
 	private CardModel ComputeDetails()
@@ -86,7 +81,7 @@ public class CardsManager : MonoBehaviour
 		if (referenceCard != null) 
 		{
 			var front = referenceCard.transform.GetChild(0);
-			var back = referenceCard.transform.GetChild(0);
+			var back = referenceCard.transform.GetChild(1);
 
 			if (back.TryGetComponent<SpriteRenderer>(out var backSpriteRenderer))
 			{
@@ -96,6 +91,25 @@ public class CardsManager : MonoBehaviour
 			if (front.TryGetComponent<SpriteRenderer>(out var frontSpriteRenderer))
 			{
 				frontSpriteRenderer.color = Color.clear;
+			}
+		}
+	}
+
+	private void SetPlayableCardColor(GameObject card)
+	{
+		if (card != null)
+		{
+			var front = card.transform.GetChild(0);
+			var back = card.transform.GetChild(1);
+
+			if (back.TryGetComponent<SpriteRenderer>(out var backSpriteRenderer))
+			{
+				backSpriteRenderer.color = Color.white;
+			}
+
+			if (front.TryGetComponent<SpriteRenderer>(out var frontSpriteRenderer))
+			{
+				frontSpriteRenderer.color = Color.white;
 			}
 		}
 	}

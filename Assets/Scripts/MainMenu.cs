@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class MainMenu : MonoBehaviour
@@ -9,6 +10,9 @@ public class MainMenu : MonoBehaviour
 	private GameObject CreditsButton;
 	private GameObject PlayButton;
 	private GameObject QuitButton;
+
+	public static MainMenu Instance;
+	public static event Action QuitGame;
 	
 	void Awake()
 	{
@@ -32,6 +36,11 @@ public class MainMenu : MonoBehaviour
 		if (GameStateManager != null)
 		{
 			GameStateManager.HideGameElements();
+			AppName.SetActive(true);
+			SettingsButton.SetActive(true);
+			CreditsButton.SetActive(true);
+			PlayButton.SetActive(true);
+			QuitButton.SetActive(true);
 		}
 	}
 
