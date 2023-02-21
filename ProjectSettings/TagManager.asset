@@ -17,6 +17,8 @@ TagManager:
   - CreditsButton
   - AppName
   - MainMenu
+  - TimerComponent
+  - PointsText
   layers:
   - Default
   - TransparentFX

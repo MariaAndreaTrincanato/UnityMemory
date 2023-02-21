@@ -1,5 +1,6 @@
 using Assets.Scripts.Helpers;
 using Assets.Scripts.Models;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -21,6 +22,8 @@ public class GameStateManager : MonoBehaviour
 	
 	[SerializeField]
 	private AudioClip CardTurnedAudio;
+
+	public static event Action<int> PointsUpdated;
 
 	void Awake()
 	{
@@ -77,11 +80,14 @@ public class GameStateManager : MonoBehaviour
 		bool isMatch = EvaluateMatch();
 		if (isMatch)
 		{
+			
 			Points++;
 			IsHypeActive = true;
-
+			
 			StartCoroutine(WaitToPlayMatchParticle(1f));
 			StartCoroutine(WaitToRemove(1.5f));
+
+			PointsUpdated?.Invoke(Points);
 			return;
 		}
 

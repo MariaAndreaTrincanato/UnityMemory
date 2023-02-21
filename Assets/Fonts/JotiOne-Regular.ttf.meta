@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a12cc336b401cc74ca02906b37669c00
+guid: 586030bc98e2f1b47b726ef5a383c0eb
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Visor
+  - Joti One
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
