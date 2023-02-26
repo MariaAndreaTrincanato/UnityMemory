@@ -1,9 +1,9 @@
 using TMPro;
 using UnityEngine;
 
-public class InGame : MonoBehaviour
+public class InGameUI : MonoBehaviour
 {
-	private TextMeshPro PointsText;
+	private TextMeshProUGUI PointsText;
 	private GameObject TimerObject;
 	
 	void Start()
@@ -19,7 +19,7 @@ public class InGame : MonoBehaviour
 		var pointsObject = GameObject.FindGameObjectWithTag("PointsText");
 		if (pointsObject != null)
 		{
-			PointsText = pointsObject.GetComponent<TextMeshPro>();
+			PointsText = pointsObject.GetComponent<TextMeshProUGUI>();
 		}
 	}
 
@@ -30,6 +30,9 @@ public class InGame : MonoBehaviour
 
 	private void UpdatePointsText(int points)
 	{
-		PointsText.text = $"POINTS: {points}";
+		if (PointsText != null)
+		{
+			PointsText.text = $"POINTS: {points}";
+		}
 	} 
 }

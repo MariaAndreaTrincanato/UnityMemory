@@ -23,7 +23,7 @@ public class CardsManager : MonoBehaviour
 	{
 		ReferencePositions = GameObject.FindGameObjectsWithTag("CardPositionReference").ToList();
 		ReferenceCard = GameObject.FindGameObjectWithTag("ReferenceCardPrefab");
-		SetReferenceCardTransparentColors(ReferenceCard);
+		SetReferenceCardTransparentColorsAndCollider(ReferenceCard);
 	}
 
 	public void ResetGame()
@@ -48,7 +48,7 @@ public class CardsManager : MonoBehaviour
 
 			Vector3 currentReferencePosition = ReferencePositions[i].transform.position;
 			var currentCard = Instantiate(ReferenceCard);
-			SetPlayableCardColor(currentCard);
+			SetPlayableCardColorAndCollider(currentCard);
 			currentCard.transform.SetParent(transform);
 			currentCard.transform.position = currentReferencePosition;
 
@@ -76,10 +76,15 @@ public class CardsManager : MonoBehaviour
 		};
 	}
 
-	private void SetReferenceCardTransparentColors(GameObject referenceCard)
+	private void SetReferenceCardTransparentColorsAndCollider(GameObject referenceCard)
 	{
 		if (referenceCard != null) 
 		{
+			if (referenceCard.TryGetComponent<BoxCollider2D>(out var boxCollider))
+			{
+				boxCollider.enabled = false;
+			}
+
 			var front = referenceCard.transform.GetChild(0);
 			var back = referenceCard.transform.GetChild(1);
 
@@ -95,10 +100,15 @@ public class CardsManager : MonoBehaviour
 		}
 	}
 
-	private void SetPlayableCardColor(GameObject card)
+	private void SetPlayableCardColorAndCollider(GameObject card)
 	{
 		if (card != null)
 		{
+			if (card.TryGetComponent<BoxCollider2D>(out var boxCollider))
+			{
+				boxCollider.enabled = true;
+			}
+
 			var front = card.transform.GetChild(0);
 			var back = card.transform.GetChild(1);
 

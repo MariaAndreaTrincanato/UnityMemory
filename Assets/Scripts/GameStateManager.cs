@@ -22,6 +22,9 @@ public class GameStateManager : MonoBehaviour
 	
 	[SerializeField]
 	private AudioClip CardTurnedAudio;
+	
+	[SerializeField]
+	private AudioClip CardsMatchedAudio;
 
 	public static event Action<int> PointsUpdated;
 
@@ -80,14 +83,8 @@ public class GameStateManager : MonoBehaviour
 		bool isMatch = EvaluateMatch();
 		if (isMatch)
 		{
-			
-			Points++;
-			IsHypeActive = true;
-			
 			StartCoroutine(WaitToPlayMatchParticle(1f));
 			StartCoroutine(WaitToRemove(1.5f));
-
-			PointsUpdated?.Invoke(Points);
 			return;
 		}
 
@@ -105,6 +102,14 @@ public class GameStateManager : MonoBehaviour
 		if (transform.TryGetComponent<AudioSource>(out var audioSource)) 
 		{
 			audioSource.PlayOneShot(CardTurnedAudio);
+		}
+	}
+
+	public void PlayCardsMatchSound()
+	{
+		if (transform.TryGetComponent<AudioSource>(out var audioSource))
+		{
+			audioSource.PlayOneShot(CardsMatchedAudio);
 		}
 	}
 
@@ -159,6 +164,7 @@ public class GameStateManager : MonoBehaviour
 
 	public void EndGame()
 	{
+		PointsUpdated.Invoke(0);
 		InitializeGameState();
 		var mainMenuObject = GameObject.FindGameObjectWithTag("MainMenu");
 		if ( mainMenuObject != null && mainMenuObject.TryGetComponent<MainMenu>(out var mainMenuScript))
@@ -188,6 +194,9 @@ public class GameStateManager : MonoBehaviour
 		if (SecondCard.GameObject.TryGetComponent<Card>(out var secondCardScript))
 		{
 			secondCardScript.ShowMatchEffect();
+			PlayCardsMatchSound();
+			Points++;
+			PointsUpdated?.Invoke(Points);
 		}
 	}
 
