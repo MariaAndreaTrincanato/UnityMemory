@@ -9,6 +9,8 @@ public class InGameUI : MonoBehaviour
 	void Start()
 	{
 		GameStateManager.PointsUpdated += UpdatePointsText;
+		GameStateManager.GameStarted += OnGameStarted;
+		GameStateManager.GameEnded += OnGameEnded;
 
 		TimerObject = GameObject.FindGameObjectWithTag("TimerComponent");
 		if (TimerObject != null)
@@ -19,7 +21,18 @@ public class InGameUI : MonoBehaviour
 		var pointsObject = GameObject.FindGameObjectWithTag("PointsText");
 		if (pointsObject != null)
 		{
-			PointsText = pointsObject.GetComponent<TextMeshProUGUI>();
+			if (pointsObject.TryGetComponent<TextMeshProUGUI>(out PointsText))
+			{
+				PointsText.color = Color.clear;
+			}
+		}
+	}
+
+	private void OnGameEnded(bool won)
+	{
+		if (PointsText != null)
+		{
+			PointsText.color = Color.clear;
 		}
 	}
 
@@ -34,5 +47,13 @@ public class InGameUI : MonoBehaviour
 		{
 			PointsText.text = $"POINTS: {points}";
 		}
-	} 
+	}
+
+	private void OnGameStarted()
+	{
+		if (PointsText != null)
+		{
+			PointsText.color = Color.white;
+		}
+	}
 }

@@ -10,9 +10,6 @@ public class MainMenu : MonoBehaviour
 	private GameObject CreditsButton;
 	private GameObject PlayButton;
 	private GameObject QuitButton;
-
-	public static MainMenu Instance;
-	public static event Action QuitGame;
 	
 	void Awake()
 	{

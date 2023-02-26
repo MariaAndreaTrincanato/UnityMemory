@@ -27,6 +27,8 @@ public class GameStateManager : MonoBehaviour
 	private AudioClip CardsMatchedAudio;
 
 	public static event Action<int> PointsUpdated;
+	public static event Action GameStarted;
+	public static event Action<bool> GameEnded;
 
 	void Awake()
 	{
@@ -154,6 +156,7 @@ public class GameStateManager : MonoBehaviour
 
 	public void StartGame()
 	{
+		GameStarted.Invoke();
 		InitializeGameState();
 		var cardsContainer = GameObject.FindGameObjectWithTag("CardsContainer");
 		if (cardsContainer != null && cardsContainer.TryGetComponent<CardsManager>(out var cardsManagerScript))
