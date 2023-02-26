@@ -49,17 +49,27 @@ public class GameStateManager : MonoBehaviour
 		RemainingCards = TotalCardsNumber;
 	}
 
+	#region card selection
+	private void HideMatchedCards()
+	{
+		FirstCard.GameObject.SetActive(false);
+		SecondCard.GameObject.SetActive(false);
+		FirstCard = null;
+		SecondCard = null;
+		Mathf.Clamp(RemainingCards -= 2, 0, TotalCardsNumber);
+	}
+
 	private void ResetSelectedCards()
 	{
-		if (FirstCard.GameObject.TryGetComponent<Card>(out var firstCardScript)) 
+		if (FirstCard.GameObject.TryGetComponent<Card>(out var firstCardScript))
 		{
 			firstCardScript.TurnCard();
 			FirstCard = null;
 		}
 
 		var secondCardScript = SecondCard.GameObject.GetComponent<Card>();
-		if (secondCardScript != null) 
-		{ 
+		if (secondCardScript != null)
+		{
 			secondCardScript.TurnCard();
 			SecondCard = null;
 		}
@@ -67,7 +77,7 @@ public class GameStateManager : MonoBehaviour
 
 	public void SelectCard(CardModel card)
 	{
-		if (FirstCard == null) 
+		if (FirstCard == null)
 		{
 			SelectFirstCard(card);
 			return;
@@ -83,7 +93,7 @@ public class GameStateManager : MonoBehaviour
 	public void SelectSecondCard(CardModel card)
 	{
 		SecondCard = card;
-		
+
 		bool isMatch = EvaluateMatch();
 		if (isMatch)
 		{
@@ -100,46 +110,9 @@ public class GameStateManager : MonoBehaviour
 	{
 		return FirstCard.CardSign == SecondCard.CardSign;
 	}
+	#endregion
 
-	private void HideMatchedCards()
-	{
-		FirstCard.GameObject.SetActive(false);
-		SecondCard.GameObject.SetActive(false);
-		FirstCard = null;
-		SecondCard = null;
-		Mathf.Clamp(RemainingCards -= 2, 0, TotalCardsNumber);
-	}
-
-	public void UpdateWarningMessage(string message)
-	{
-		Message = message;
-	}
-
-	private void EvaluateGameOver()
-	{
-		IsGameOver = RemainingCards == 0;
-		if (IsGameOver) 
-		{ 
-			var cardsContainer = GameObject.FindGameObjectWithTag("CardsContainer");
-			if (cardsContainer != null && cardsContainer.TryGetComponent<CardsManager>(out var cardsManagerScript))
-			{
-				cardsManagerScript.HideGameRefElements();
-			}
-
-			//TODO: show game over screen based on points and/or timeout
-			StartCoroutine(WaitToRestartGame(2));
-		}
-	}
-
-	public void HideGameElements()
-	{
-		var cardsContainer = GameObject.FindGameObjectWithTag("CardsContainer");
-		if (cardsContainer != null && cardsContainer.TryGetComponent<CardsManager>(out var cardsManagerScript))
-		{
-			cardsManagerScript.HideGameRefElements();
-		}
-	}
-
+	#region game flow
 	public void StartGame()
 	{
 		GameStarted.Invoke();
@@ -151,14 +124,46 @@ public class GameStateManager : MonoBehaviour
 		}
 	}
 
-	public void EndGame()
+	public void EndGame(bool won = true)
 	{
-		PointsUpdated.Invoke(0);
+		GameEnded.Invoke(won);
 		InitializeGameState();
 		var mainMenuObject = GameObject.FindGameObjectWithTag("MainMenu");
-		if ( mainMenuObject != null && mainMenuObject.TryGetComponent<MainMenu>(out var mainMenuScript))
+		if (mainMenuObject != null && mainMenuObject.TryGetComponent<MainMenu>(out var mainMenuScript))
 		{
 			mainMenuScript.InitializeGameUI();
+		}
+	}
+
+	private void EvaluateGameOver()
+	{
+		IsGameOver = RemainingCards == 0;
+		if (IsGameOver)
+		{
+			var cardsContainer = GameObject.FindGameObjectWithTag("CardsContainer");
+			if (cardsContainer != null && cardsContainer.TryGetComponent<CardsManager>(out var cardsManagerScript))
+			{
+				cardsManagerScript.HideGameRefElements();
+			}
+
+			//TODO: show game over screen based on points and/or timeout
+			StartCoroutine(WaitToRestartGame(2));
+		}
+	}
+
+	#endregion
+
+	public void UpdateWarningMessage(string message)
+	{
+		Message = message;
+	}
+
+	public void HideGameElements()
+	{
+		var cardsContainer = GameObject.FindGameObjectWithTag("CardsContainer");
+		if (cardsContainer != null && cardsContainer.TryGetComponent<CardsManager>(out var cardsManagerScript))
+		{
+			cardsManagerScript.HideGameRefElements();
 		}
 	}
 

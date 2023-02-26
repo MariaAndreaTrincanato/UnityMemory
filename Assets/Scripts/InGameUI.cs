@@ -5,6 +5,7 @@ public class InGameUI : MonoBehaviour
 {
 	private TextMeshProUGUI PointsText;
 	private GameObject TimerObject;
+	private Transform QuitGameButton;
 	
 	void Start()
 	{
@@ -26,6 +27,21 @@ public class InGameUI : MonoBehaviour
 				PointsText.color = Color.clear;
 			}
 		}
+
+		QuitGameButton = transform.GetChild(2);
+	}
+
+	public void OnQuitGameButtonClicked()
+	{
+		var gameStateObject = GameObject.FindGameObjectWithTag("GameStateManager");
+		if (gameStateObject != null)
+		{
+			if (gameStateObject.TryGetComponent<GameStateManager>(out var script))
+			{
+				script.PlayButtonSelectedSound();
+				script.EndGame();
+			}
+		}
 	}
 
 	private void OnGameEnded(bool won)
@@ -34,11 +50,18 @@ public class InGameUI : MonoBehaviour
 		{
 			PointsText.color = Color.clear;
 		}
+
+		if (QuitGameButton != null)
+		{
+			QuitGameButton.gameObject.SetActive(false);
+		}
 	}
 
 	private void OnDestroy()
 	{
 		GameStateManager.PointsUpdated -= UpdatePointsText;
+		GameStateManager.GameStarted -= OnGameStarted;
+		GameStateManager.GameEnded -= OnGameEnded;
 	}
 
 	private void UpdatePointsText(int points)
@@ -54,6 +77,11 @@ public class InGameUI : MonoBehaviour
 		if (PointsText != null)
 		{
 			PointsText.color = Color.white;
+		}
+
+		if (QuitGameButton != null)
+		{
+			QuitGameButton.gameObject.SetActive(true);
 		}
 	}
 }
