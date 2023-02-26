@@ -1,4 +1,3 @@
-using Assets.Scripts.Helpers;
 using Assets.Scripts.Models;
 using System;
 using System.Collections;
@@ -25,6 +24,9 @@ public class GameStateManager : MonoBehaviour
 	
 	[SerializeField]
 	private AudioClip CardsMatchedAudio;
+	
+	[SerializeField]
+	private AudioClip ButtonSelectedAudio;
 
 	public static event Action<int> PointsUpdated;
 	public static event Action GameStarted;
@@ -99,22 +101,6 @@ public class GameStateManager : MonoBehaviour
 		return FirstCard.CardSign == SecondCard.CardSign;
 	}
 
-	public void PlayCardTurnSound()
-	{
-		if (transform.TryGetComponent<AudioSource>(out var audioSource)) 
-		{
-			audioSource.PlayOneShot(CardTurnedAudio);
-		}
-	}
-
-	public void PlayCardsMatchSound()
-	{
-		if (transform.TryGetComponent<AudioSource>(out var audioSource))
-		{
-			audioSource.PlayOneShot(CardsMatchedAudio);
-		}
-	}
-
 	private void HideMatchedCards()
 	{
 		FirstCard.GameObject.SetActive(false);
@@ -175,6 +161,32 @@ public class GameStateManager : MonoBehaviour
 			mainMenuScript.InitializeGameUI();
 		}
 	}
+
+	#region audios
+	public void PlayCardTurnSound()
+	{
+		if (transform.TryGetComponent<AudioSource>(out var audioSource))
+		{
+			audioSource.PlayOneShot(CardTurnedAudio);
+		}
+	}
+
+	public void PlayCardsMatchSound()
+	{
+		if (transform.TryGetComponent<AudioSource>(out var audioSource))
+		{
+			audioSource.PlayOneShot(CardsMatchedAudio);
+		}
+	}
+
+	public void PlayButtonSelectedSound()
+	{
+		if (transform.TryGetComponent<AudioSource>(out var audioSource))
+		{
+			audioSource.PlayOneShot(ButtonSelectedAudio);
+		}
+	}
+	#endregion
 
 	#region coroutines
 	public IEnumerator WaitToTurn(float seconds)

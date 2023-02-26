@@ -19,6 +19,7 @@ TagManager:
   - MainMenu
   - TimerComponent
   - PointsText
+  - CreditsCanvas
   layers:
   - Default
   - TransparentFX

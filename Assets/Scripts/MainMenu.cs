@@ -43,6 +43,7 @@ public class MainMenu : MonoBehaviour
 
 	public void OnPlayButtonClicked()
 	{
+		GameStateManager.PlayButtonSelectedSound();
 		AppName.SetActive(false);
 		SettingsButton.SetActive(false);
 		CreditsButton.SetActive(false);
@@ -57,16 +58,26 @@ public class MainMenu : MonoBehaviour
 
 	public void OnQuitButtonClicked()
 	{
+		GameStateManager.PlayButtonSelectedSound();
 		Application.Quit();
 	}
 
 	public void OnSettingsButtonClicked()
 	{
+		GameStateManager.PlayButtonSelectedSound();
 		// TODO
 	}
 
 	public void OnCreditsButtonClicked()
 	{
-		// TODO
+		GameObject creditsRef = GameObject.FindGameObjectWithTag("CreditsCanvas");
+		if (creditsRef != null)
+		{
+			if (creditsRef.TryGetComponent<Credits>(out var script))
+			{
+				GameStateManager.PlayButtonSelectedSound();
+				script.ShowCreditsUI();
+			}
+		}
 	}
 }
