@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -1116830189
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: b68fd88d5b204d540acbe1bb8043ec20, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bd10e097fc0115d4e80707138fbcc396, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -135,12 +135,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce0261d4812b3348a06d3e999f50517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HeartsSprite: {fileID: 21300000, guid: b68fd88d5b204d540acbe1bb8043ec20, type: 3}
-  DiamondsSprite: {fileID: 21300000, guid: 248f8abb5a9d27043b7a3492b4f42d2b, type: 3}
-  CirclesSprite: {fileID: 21300000, guid: 231454537f4c3ac4e9fa2e5eede72fd7, type: 3}
-  SpadesSprite: {fileID: 21300000, guid: 7a112a6d1820d024fb1f99f3fbde86b2, type: 3}
-  ClubsSprite: {fileID: 21300000, guid: 506643534e542924fb5acea9041d94db, type: 3}
-  StarsSprite: {fileID: 21300000, guid: ea6b7b7fd3dfacd46bab588fcd293f66, type: 3}
+  BluePlanetSprite: {fileID: 21300000, guid: bd10e097fc0115d4e80707138fbcc396, type: 3}
+  HeartPlanetSprite: {fileID: 21300000, guid: 21dd96852d4f4f14d803291315481295, type: 3}
+  YellowPlanetSprite: {fileID: 21300000, guid: f470a0b1862c23d4281141530e75375d, type: 3}
+  PurplePlanetSprite: {fileID: 21300000, guid: 8047a0bcaec1c0f4a8018109e8832818, type: 3}
+  SandPlanetSprite: {fileID: 21300000, guid: 2854f7328fde1324899e161148d72d84, type: 3}
+  RedPlanetSprite: {fileID: 21300000, guid: 33db0b71829d2104e91181a502aa4e94, type: 3}
 --- !u!61 &3702162507832649007
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14385,7 +14385,7 @@ SpriteRenderer:
   m_SortingLayerID: -1116830189
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 92612adf05dc81e498cd2b4199118429, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 234ed650c0c8ce74fb3cfdc3a6826ac4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

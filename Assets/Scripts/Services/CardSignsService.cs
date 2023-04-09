@@ -8,17 +8,17 @@ namespace Assets.Scripts
 {
 	public static class CardSignsService
 	{
-		private static readonly IEnumerable<CardSignsEnum> SignsList = new List<CardSignsEnum>
+		private static readonly IEnumerable<CardPlanetsEnum> SignsList = new List<CardPlanetsEnum>
 		{
-			CardSignsEnum.Diamonds,
-			CardSignsEnum.Spades,
-			CardSignsEnum.Clubs,
-			CardSignsEnum.Hearts,
-			CardSignsEnum.Circles,
-			CardSignsEnum.Stars
+			CardPlanetsEnum.BluePlanet,
+			CardPlanetsEnum.HeartPlanet,
+			CardPlanetsEnum.YellowPlanet,
+			CardPlanetsEnum.PurplePlanet,
+			CardPlanetsEnum.SandPlanet,
+			CardPlanetsEnum.RedPlanet
 		};
 
-		public static CardSignsEnum? GetNewCardSign(List<CardPositionModel> models)
+		public static CardPlanetsEnum? GetNewCardSign(List<CardPositionModel> models)
 		{
 			var currentSign = GetRandomSign();
 			bool hasMaxItems = models.Where(x => x.CardSign == currentSign).Count() == 2;
@@ -32,7 +32,7 @@ namespace Assets.Scripts
 			return currentSign;
 		}
 
-		private static CardSignsEnum GetRandomSign()
+		private static CardPlanetsEnum GetRandomSign()
 		{
 			Random rnd = new();
 			int randomIndex = rnd.Next(0, 6);

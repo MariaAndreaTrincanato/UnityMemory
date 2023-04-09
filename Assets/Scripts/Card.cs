@@ -9,22 +9,22 @@ public class Card : MonoBehaviour
 	private Transform CardContentChild;
 
 	[SerializeField]
-	private Sprite HeartsSprite;
+	private Sprite BluePlanetSprite;
 
 	[SerializeField]
-	private Sprite DiamondsSprite;
+	private Sprite HeartPlanetSprite;
 
 	[SerializeField]
-	private Sprite CirclesSprite;
+	private Sprite YellowPlanetSprite;
 
 	[SerializeField]
-	private Sprite SpadesSprite;
+	private Sprite PurplePlanetSprite;
 
 	[SerializeField]
-	private Sprite ClubsSprite;
+	private Sprite SandPlanetSprite;
 
 	[SerializeField]
-	private Sprite StarsSprite;
+	private Sprite RedPlanetSprite;
 
 
 	private void Awake()
@@ -78,29 +78,29 @@ public class Card : MonoBehaviour
 		}
 	}
 
-	private void AssignSprite(CardSignsEnum sign)
+	private void AssignSprite(CardPlanetsEnum sign)
 	{
 		if (CardContentChild != null && CardContentChild.gameObject.TryGetComponent<SpriteRenderer>(out var spriteRenderer))
 		{
 			switch(sign) 
 			{
-				case CardSignsEnum.Spades:
-					spriteRenderer.sprite = SpadesSprite; 
+				case CardPlanetsEnum.BluePlanet:
+					spriteRenderer.sprite = BluePlanetSprite; 
 					break;
-				case CardSignsEnum.Clubs:
-					spriteRenderer.sprite = ClubsSprite;
+				case CardPlanetsEnum.HeartPlanet:
+					spriteRenderer.sprite = HeartPlanetSprite;
 					break;
-				case CardSignsEnum.Stars:
-					spriteRenderer.sprite = StarsSprite;
+				case CardPlanetsEnum.YellowPlanet:
+					spriteRenderer.sprite = YellowPlanetSprite;
 					break;
-				case CardSignsEnum.Hearts:
-					spriteRenderer.sprite = HeartsSprite;
+				case CardPlanetsEnum.PurplePlanet:
+					spriteRenderer.sprite = PurplePlanetSprite;
 					break;
-				case CardSignsEnum.Diamonds:
-					spriteRenderer.sprite = DiamondsSprite;
+				case CardPlanetsEnum.SandPlanet:
+					spriteRenderer.sprite = SandPlanetSprite;
 					break;
-				case CardSignsEnum.Circles:
-					spriteRenderer.sprite = CirclesSprite;
+				case CardPlanetsEnum.RedPlanet:
+					spriteRenderer.sprite = RedPlanetSprite;
 					break;
 				default:
 					break;

@@ -61,7 +61,7 @@ public class CardsManager : MonoBehaviour
 
 	private CardModel ComputeDetails()
 	{
-		CardSignsEnum? sign = CardSignsService.GetNewCardSign(CardPositions);
+		CardPlanetsEnum? sign = CardSignsService.GetNewCardSign(CardPositions);
 		if (sign == null)
 		{
 			return null;

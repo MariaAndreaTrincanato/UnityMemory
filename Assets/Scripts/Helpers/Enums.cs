@@ -23,6 +23,22 @@ namespace Assets.Scripts.Helpers
 			Stars
 		}
 
+		public enum CardPlanetsEnum
+		{
+			[Description("BluePlanet")]
+			BluePlanet,
+			[Description("HeartPlanet")]
+			HeartPlanet,
+			[Description("YellowPlanet")]
+			YellowPlanet,
+			[Description("PurplePlanet")]
+			PurplePlanet,
+			[Description("SandPlanet")]
+			SandPlanet,
+			[Description("RedPlanet")]
+			RedPlanet
+		}
+
 		public static string GetDescription<T>(this T e) where T : IConvertible
 		{
 			if (e is Enum)

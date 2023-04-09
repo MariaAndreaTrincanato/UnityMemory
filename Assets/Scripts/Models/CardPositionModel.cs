@@ -4,7 +4,7 @@ namespace Assets.Scripts.Models
 {
 	public class CardPositionModel
 	{
-		public CardSignsEnum CardSign { get; set; }
+		public CardPlanetsEnum CardSign { get; set; }
 		public int Index { get; set; }
 	}
 }

@@ -576,7 +576,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.13333334, g: 0.15686275, b: 0.19215687, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1062,12 +1062,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1394,7 +1394,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 268, y: 98.8}
+  m_AnchoredPosition: {x: 255, y: 104}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &893706039
@@ -1527,8 +1527,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -65, y: -67}
-  m_SizeDelta: {x: 82, y: 82}
+  m_AnchoredPosition: {x: -51, y: -53.121}
+  m_SizeDelta: {x: 56, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &925660884
 MonoBehaviour:
@@ -1696,12 +1696,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1775,7 +1775,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.3, y: 14.9}
+  m_AnchoredPosition: {x: 44.8, y: 21}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1033246377
@@ -1801,7 +1801,7 @@ MonoBehaviour:
   m_text: 'Some of the sounds in this project were created by David McKee (ViRiX)
     soundcloud.com/virix
 
-    
+
 
     Sound from Zapsplat.com'
   m_isRightToLeft: 0
@@ -1830,8 +1830,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1866,7 +1866,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -161.12201, y: 0, z: -168.25378, w: 0}
+  m_margin: {x: -191.08777, y: 0, z: -118.313446, w: -94.33437}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1990,10 +1990,10 @@ RectTransform:
   m_Father: {fileID: 1026985811}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000030517578}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1262, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1136753940
 MonoBehaviour:
@@ -2453,12 +2453,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -2752,8 +2752,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 65, y: 63}
-  m_SizeDelta: {x: 82, y: 82}
+  m_AnchoredPosition: {x: 49, y: 45}
+  m_SizeDelta: {x: 56, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1549763322
 MonoBehaviour:
@@ -2967,10 +2967,10 @@ RectTransform:
   m_Father: {fileID: 1503254573}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -637, y: 259}
-  m_SizeDelta: {x: 60, y: 60}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 52.247, y: -50.2469}
+  m_SizeDelta: {x: 56, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1797878676
 MonoBehaviour:
@@ -3174,6 +3174,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 287642309}
     m_Modifications:
     - target: {fileID: 922955088025433526, guid: 5f34f6d12ab2b1b4cb1aa67a421b7f1d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 922955088025433526, guid: 5f34f6d12ab2b1b4cb1aa67a421b7f1d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 922955088025433526, guid: 5f34f6d12ab2b1b4cb1aa67a421b7f1d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 922955088025433526, guid: 5f34f6d12ab2b1b4cb1aa67a421b7f1d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -3183,6 +3195,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 922955088025433526, guid: 5f34f6d12ab2b1b4cb1aa67a421b7f1d, type: 3}
       propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 922955088025433526, guid: 5f34f6d12ab2b1b4cb1aa67a421b7f1d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 922955088025433526, guid: 5f34f6d12ab2b1b4cb1aa67a421b7f1d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 922955088025433526, guid: 5f34f6d12ab2b1b4cb1aa67a421b7f1d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 922955088025433526, guid: 5f34f6d12ab2b1b4cb1aa67a421b7f1d, type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2523452862257948708, guid: 5f34f6d12ab2b1b4cb1aa67a421b7f1d, type: 3}
@@ -3246,6 +3274,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6388096993871083692, guid: 5f34f6d12ab2b1b4cb1aa67a421b7f1d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388096993871083692, guid: 5f34f6d12ab2b1b4cb1aa67a421b7f1d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388096993871083692, guid: 5f34f6d12ab2b1b4cb1aa67a421b7f1d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388096993871083692, guid: 5f34f6d12ab2b1b4cb1aa67a421b7f1d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -3253,6 +3293,30 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6438996369105068255, guid: 5f34f6d12ab2b1b4cb1aa67a421b7f1d, type: 3}
+      propertyPath: RedPlanetSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 33db0b71829d2104e91181a502aa4e94, type: 3}
+    - target: {fileID: 6438996369105068255, guid: 5f34f6d12ab2b1b4cb1aa67a421b7f1d, type: 3}
+      propertyPath: BluePlanetSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bd10e097fc0115d4e80707138fbcc396, type: 3}
+    - target: {fileID: 6438996369105068255, guid: 5f34f6d12ab2b1b4cb1aa67a421b7f1d, type: 3}
+      propertyPath: SandPlanetSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2854f7328fde1324899e161148d72d84, type: 3}
+    - target: {fileID: 6438996369105068255, guid: 5f34f6d12ab2b1b4cb1aa67a421b7f1d, type: 3}
+      propertyPath: HeartPlanetSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 21dd96852d4f4f14d803291315481295, type: 3}
+    - target: {fileID: 6438996369105068255, guid: 5f34f6d12ab2b1b4cb1aa67a421b7f1d, type: 3}
+      propertyPath: PurplePlanetSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8047a0bcaec1c0f4a8018109e8832818, type: 3}
+    - target: {fileID: 6438996369105068255, guid: 5f34f6d12ab2b1b4cb1aa67a421b7f1d, type: 3}
+      propertyPath: YellowPlanetSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f470a0b1862c23d4281141530e75375d, type: 3}
     - target: {fileID: 8266137481430233412, guid: 5f34f6d12ab2b1b4cb1aa67a421b7f1d, type: 3}
       propertyPath: playOnAwake
       value: 0

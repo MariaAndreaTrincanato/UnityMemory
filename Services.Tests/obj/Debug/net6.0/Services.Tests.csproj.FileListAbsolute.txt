@@ -1,0 +1,5 @@
+D:\Unity3D\UnityMemory\Services.Tests\obj\Debug\net6.0\Services.Tests.csproj.AssemblyReference.cache
+D:\Unity3D\UnityMemory\Services.Tests\obj\Debug\net6.0\Services.Tests.GeneratedMSBuildEditorConfig.editorconfig
+D:\Unity3D\UnityMemory\Services.Tests\obj\Debug\net6.0\Services.Tests.AssemblyInfoInputs.cache
+D:\Unity3D\UnityMemory\Services.Tests\obj\Debug\net6.0\Services.Tests.AssemblyInfo.cs
+D:\Unity3D\UnityMemory\Services.Tests\obj\Debug\net6.0\Services.Tests.csproj.CoreCompileInputs.cache
