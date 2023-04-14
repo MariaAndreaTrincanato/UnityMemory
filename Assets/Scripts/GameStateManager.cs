@@ -97,13 +97,13 @@ public class GameStateManager : MonoBehaviour
 		bool isMatch = EvaluateMatch();
 		if (isMatch)
 		{
-			StartCoroutine(WaitToPlayMatchParticle(1f));
-			StartCoroutine(WaitToRemove(1.5f));
+			StartCoroutine(WaitToPlayMatchParticle(0.5f));
+			StartCoroutine(WaitToRemove(1.0f));
 			return;
 		}
 
 		IsHypeActive = false;
-		StartCoroutine(WaitToTurn(1f));
+		StartCoroutine(WaitToTurn(0.8f));
 	}
 
 	private bool EvaluateMatch()
