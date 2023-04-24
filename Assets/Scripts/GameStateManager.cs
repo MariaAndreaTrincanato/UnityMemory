@@ -127,12 +127,12 @@ public class GameStateManager : MonoBehaviour
 	public void EndGame(bool won = true)
 	{
 		GameEnded.Invoke(won);
-		InitializeGameState();
-		var mainMenuObject = GameObject.FindGameObjectWithTag("MainMenu");
-		if (mainMenuObject != null && mainMenuObject.TryGetComponent<MainMenu>(out var mainMenuScript))
-		{
-			mainMenuScript.InitializeGameUI();
-		}
+		//InitializeGameState();
+		//var mainMenuObject = GameObject.FindGameObjectWithTag("MainMenu");
+		//if (mainMenuObject != null && mainMenuObject.TryGetComponent<MainMenu>(out var mainMenuScript))
+		//{
+		//	mainMenuScript.InitializeGameUI();
+		//}
 	}
 
 	private void EvaluateGameOver()
@@ -147,10 +147,8 @@ public class GameStateManager : MonoBehaviour
 			}
 
 			//TODO: show game over screen based on points and/or timeout
-			StartCoroutine(WaitToRestartGame(2));
 		}
 	}
-
 	#endregion
 
 	public void UpdateWarningMessage(string message)
@@ -224,12 +222,6 @@ public class GameStateManager : MonoBehaviour
 	{
 		yield return new WaitForSeconds(seconds);
 		//HideMatchedCards();
-	}
-
-	public IEnumerator WaitToRestartGame(float seconds)
-	{
-		yield return new WaitForSeconds(seconds);
-		EndGame();
 	}
 	#endregion
 }

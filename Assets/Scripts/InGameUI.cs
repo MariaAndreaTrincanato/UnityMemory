@@ -29,6 +29,10 @@ public class InGameUI : MonoBehaviour
 		}
 
 		QuitGameButton = transform.GetChild(2);
+		if (QuitGameButton != null)
+		{
+			QuitGameButton.gameObject.SetActive(false);
+		}
 	}
 
 	public void OnQuitGameButtonClicked()
@@ -38,6 +42,10 @@ public class InGameUI : MonoBehaviour
 		{
 			if (gameStateObject.TryGetComponent<GameStateManager>(out var script))
 			{
+				if (QuitGameButton != null)
+				{
+					QuitGameButton.gameObject.SetActive(false);
+				}
 				script.PlayButtonSelectedSound();
 				script.EndGame();
 			}
@@ -49,11 +57,6 @@ public class InGameUI : MonoBehaviour
 		if (PointsText != null)
 		{
 			PointsText.color = Color.clear;
-		}
-
-		if (QuitGameButton != null)
-		{
-			QuitGameButton.gameObject.SetActive(false);
 		}
 	}
 
