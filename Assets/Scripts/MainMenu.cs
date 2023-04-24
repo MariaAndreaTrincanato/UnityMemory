@@ -6,7 +6,6 @@ public class MainMenu : MonoBehaviour
 	private GameStateManager GameStateManager;
 
 	private GameObject AppName;
-	private GameObject SettingsButton;
 	private GameObject CreditsButton;
 	private GameObject PlayButton;
 	private GameObject QuitButton;
@@ -20,7 +19,6 @@ public class MainMenu : MonoBehaviour
 		}
 
 		AppName = GameObject.FindGameObjectWithTag("AppName");
-		SettingsButton = GameObject.FindGameObjectWithTag("SettingsButton");
 		CreditsButton = GameObject.FindGameObjectWithTag("CreditsButton");
 		PlayButton = GameObject.FindGameObjectWithTag("PlayButton");
 		QuitButton = GameObject.FindGameObjectWithTag("QuitButton");
@@ -34,7 +32,6 @@ public class MainMenu : MonoBehaviour
 		{
 			GameStateManager.HideGameElements();
 			AppName.SetActive(true);
-			SettingsButton.SetActive(true);
 			CreditsButton.SetActive(true);
 			PlayButton.SetActive(true);
 			QuitButton.SetActive(true);
@@ -45,7 +42,6 @@ public class MainMenu : MonoBehaviour
 	{
 		GameStateManager.PlayButtonSelectedSound();
 		AppName.SetActive(false);
-		SettingsButton.SetActive(false);
 		CreditsButton.SetActive(false);
 		PlayButton.SetActive(false);
 		QuitButton.SetActive(false);
@@ -60,12 +56,6 @@ public class MainMenu : MonoBehaviour
 	{
 		GameStateManager.PlayButtonSelectedSound();
 		Application.Quit();
-	}
-
-	public void OnSettingsButtonClicked()
-	{
-		GameStateManager.PlayButtonSelectedSound();
-		// TODO
 	}
 
 	public void OnCreditsButtonClicked()
