@@ -20,6 +20,7 @@ TagManager:
   - TimerComponent
   - PointsText
   - CreditsCanvas
+  - InGameUI
   layers:
   - Default
   - TransparentFX

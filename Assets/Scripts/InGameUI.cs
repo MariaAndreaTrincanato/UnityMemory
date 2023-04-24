@@ -6,7 +6,9 @@ public class InGameUI : MonoBehaviour
 	private TextMeshProUGUI PointsText;
 	private GameObject TimerObject;
 	private Transform QuitGameButton;
-	
+	private Transform RetryGameButton;
+	private Transform GameOverText;
+
 	void Start()
 	{
 		GameStateManager.PointsUpdated += UpdatePointsText;
@@ -33,6 +35,18 @@ public class InGameUI : MonoBehaviour
 		{
 			QuitGameButton.gameObject.SetActive(false);
 		}
+
+		RetryGameButton = transform.GetChild(3);
+		if (RetryGameButton != null)
+		{
+			RetryGameButton.gameObject.SetActive(false);
+		}
+
+		GameOverText = transform.GetChild(4);
+		if (GameOverText != null)
+		{
+			GameOverText.gameObject.SetActive(false);
+		}
 	}
 
 	public void OnQuitGameButtonClicked()
@@ -52,12 +66,52 @@ public class InGameUI : MonoBehaviour
 		}
 	}
 
+	public void OnRetryGameButtonClicked()
+	{
+		var gameStateObject = GameObject.FindGameObjectWithTag("GameStateManager");
+		if (gameStateObject != null)
+		{
+			if (gameStateObject.TryGetComponent<GameStateManager>(out var script))
+			{
+				if (RetryGameButton != null)
+				{
+					RetryGameButton.gameObject.SetActive(false);
+				}
+
+				if (GameOverText != null)
+				{
+					GameOverText.gameObject.SetActive(false);
+				}
+
+				if (QuitGameButton != null)
+				{
+					QuitGameButton.gameObject.SetActive(false);
+				}
+
+				script.PlayButtonSelectedSound();
+				script.StartGame();
+			}
+		}
+	}
+
 	private void OnGameEnded(bool won)
 	{
 		if (PointsText != null)
 		{
 			PointsText.color = Color.clear;
 		}
+
+		if (GameOverText != null)
+		{
+			GameOverText.gameObject.SetActive(true);
+		}
+
+		if (RetryGameButton != null)
+		{
+			RetryGameButton.gameObject.SetActive(true);
+		}
+
+		// TODO: play sound based on win status
 	}
 
 	private void OnDestroy()
@@ -85,6 +139,11 @@ public class InGameUI : MonoBehaviour
 		if (QuitGameButton != null)
 		{
 			QuitGameButton.gameObject.SetActive(true);
+		}
+
+		if (GameOverText != null)
+		{
+			GameOverText.gameObject.SetActive(false);
 		}
 	}
 }
