@@ -73,7 +73,14 @@ public class Card : MonoBehaviour
 	{
 		if (CardContentChild != null)
 		{
-			CardContentChild.Rotate(new Vector3(0, 1, 0), 90);
+			if (Details.IsTurned) 
+			{
+				CardContentChild.Rotate(new Vector3(0, 1, 0), 270);
+			}
+			else
+			{
+				CardContentChild.Rotate(new Vector3(0, 1, 0), 90);
+			}
 			Details.IsTurned = !Details.IsTurned;
 		}
 	}
