@@ -21,6 +21,8 @@ TagManager:
   - PointsText
   - CreditsCanvas
   - InGameUI
+  - HudManager
+  - New tag
   layers:
   - Default
   - TransparentFX

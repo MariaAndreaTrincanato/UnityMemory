@@ -28,7 +28,7 @@ public class CardsManager : MonoBehaviour
 
 	public void ResetGame()
 	{
-		CardPositions?.Clear();
+		RemoveCards();
 		if (ReferenceCard != null && ReferencePositions != null)
 		{
 			GenerateCards();
@@ -55,6 +55,23 @@ public class CardsManager : MonoBehaviour
 			if (currentCard.TryGetComponent<Card>(out var cardScriptReference)) 
 			{
 				cardScriptReference.CreateCardDetails(details);
+			}
+		}
+	}
+
+	public void RemoveCards()
+	{
+		CardPositions?.Clear();
+		if (transform.childCount > 1)
+		{
+			var count = transform.childCount;
+			for (int i = count - 1; i > 0 ; i--)
+			{
+				var currentNode = transform.GetChild(i);
+				if (currentNode != null)
+				{
+					Destroy(currentNode.gameObject);
+				}
 			}
 		}
 	}

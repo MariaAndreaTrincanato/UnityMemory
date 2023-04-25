@@ -26,6 +26,14 @@ public class MainMenu : MonoBehaviour
 		InitializeGameUI();
 	}
 
+	public void HideMainMenuUI()
+	{
+		AppName.SetActive(false);
+		CreditsButton.SetActive(false);
+		PlayButton.SetActive(false);
+		QuitButton.SetActive(false);
+	}
+
 	public void InitializeGameUI()
 	{
 		if (GameStateManager != null)

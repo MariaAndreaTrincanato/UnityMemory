@@ -127,12 +127,11 @@ public class GameStateManager : MonoBehaviour
 	public void EndGame(bool won = true)
 	{
 		GameEnded.Invoke(won);
-		//InitializeGameState();
-		//var mainMenuObject = GameObject.FindGameObjectWithTag("MainMenu");
-		//if (mainMenuObject != null && mainMenuObject.TryGetComponent<MainMenu>(out var mainMenuScript))
-		//{
-		//	mainMenuScript.InitializeGameUI();
-		//}
+		var gameMenuObject = GameObject.FindGameObjectWithTag("InGameUI");
+		if (gameMenuObject != null && gameMenuObject.TryGetComponent<InGameUI>(out var gameMenuScript))
+		{
+			gameMenuScript.ShowGameOverUI();
+		}
 	}
 
 	private void EvaluateGameOver()
@@ -146,7 +145,7 @@ public class GameStateManager : MonoBehaviour
 				cardsManagerScript.HideGameRefElements();
 			}
 
-			//TODO: show game over screen based on points and/or timeout
+			EndGame();
 		}
 	}
 	#endregion
@@ -161,6 +160,7 @@ public class GameStateManager : MonoBehaviour
 		var cardsContainer = GameObject.FindGameObjectWithTag("CardsContainer");
 		if (cardsContainer != null && cardsContainer.TryGetComponent<CardsManager>(out var cardsManagerScript))
 		{
+			cardsManagerScript.RemoveCards();
 			cardsManagerScript.HideGameRefElements();
 		}
 	}

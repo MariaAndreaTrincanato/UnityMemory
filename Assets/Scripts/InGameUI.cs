@@ -9,16 +9,25 @@ public class InGameUI : MonoBehaviour
 	private Transform RetryGameButton;
 	private Transform GameOverText;
 
+	private HudManager HudManager;
+
 	void Start()
 	{
-		GameStateManager.PointsUpdated += UpdatePointsText;
-		GameStateManager.GameStarted += OnGameStarted;
-		GameStateManager.GameEnded += OnGameEnded;
-
 		TimerObject = GameObject.FindGameObjectWithTag("TimerComponent");
 		if (TimerObject != null)
 		{
 			TimerObject.SetActive(false);
+		}
+
+		var hudManagerObject = GameObject.FindGameObjectWithTag("HudManager");
+		if (hudManagerObject != null)
+		{
+			if (hudManagerObject.TryGetComponent<HudManager>(out var hudManagerScript))
+			{
+				HudManager = hudManagerScript;
+				GameStateManager.PointsUpdated += HudManager.UpdatePointsText;
+				GameStateManager.GameStarted += HudManager.ShowInGameMenu;
+			}
 		}
 
 		var pointsObject = GameObject.FindGameObjectWithTag("PointsText");
@@ -47,6 +56,81 @@ public class InGameUI : MonoBehaviour
 		{
 			GameOverText.gameObject.SetActive(false);
 		}
+
+		
+		GameStateManager.GameEnded += OnGameEnded;
+	}
+
+	private void OnDestroy()
+	{
+		if (HudManager != null)
+		{
+			GameStateManager.PointsUpdated -= HudManager.UpdatePointsText;
+			GameStateManager.GameStarted -= HudManager.ShowInGameMenu;
+		}
+		
+		GameStateManager.GameEnded -= OnGameEnded;
+	}
+
+	public void ShowInGameUI()
+	{
+		QuitGameButton = transform.GetChild(2);
+		if (QuitGameButton != null)
+		{
+			QuitGameButton.gameObject.SetActive(true);
+		}
+
+		RetryGameButton = transform.GetChild(3);
+		if (RetryGameButton != null)
+		{
+			RetryGameButton.gameObject.SetActive(false);
+		}
+
+		GameOverText = transform.GetChild(4);
+		if (GameOverText != null)
+		{
+			GameOverText.gameObject.SetActive(false);
+		}
+
+		if (TimerObject != null)
+		{
+			TimerObject.SetActive(false);
+		}
+
+		if (PointsText != null)
+		{
+			PointsText.color = Color.white;
+		}
+	}
+	
+	public void HideInGameUI()
+	{
+		QuitGameButton = transform.GetChild(2);
+		if (QuitGameButton != null)
+		{
+			QuitGameButton.gameObject.SetActive(false);
+		}
+
+		RetryGameButton = transform.GetChild(3);
+		if (RetryGameButton != null)
+		{
+			RetryGameButton.gameObject.SetActive(false);
+		}
+
+		GameOverText = transform.GetChild(4);
+		if (GameOverText != null)
+		{
+			GameOverText.gameObject.SetActive(false);
+		}
+
+		if (PointsText != null)
+		{
+			PointsText.color = Color.clear;
+		}
+
+		HudManager.UpdatePointsText(0);
+
+		// hide cards
 	}
 
 	public void OnQuitGameButtonClicked()
@@ -56,12 +140,10 @@ public class InGameUI : MonoBehaviour
 		{
 			if (gameStateObject.TryGetComponent<GameStateManager>(out var script))
 			{
-				if (QuitGameButton != null)
-				{
-					QuitGameButton.gameObject.SetActive(false);
-				}
+				script.HideGameElements();
 				script.PlayButtonSelectedSound();
-				script.EndGame();
+				HudManager.HideGameMenu();
+				HudManager.ShowMainMenu();
 			}
 		}
 	}
@@ -73,21 +155,8 @@ public class InGameUI : MonoBehaviour
 		{
 			if (gameStateObject.TryGetComponent<GameStateManager>(out var script))
 			{
-				if (RetryGameButton != null)
-				{
-					RetryGameButton.gameObject.SetActive(false);
-				}
-
-				if (GameOverText != null)
-				{
-					GameOverText.gameObject.SetActive(false);
-				}
-
-				if (QuitGameButton != null)
-				{
-					QuitGameButton.gameObject.SetActive(false);
-				}
-
+				HudManager.ShowInGameMenu();
+				HudManager.UpdatePointsText(0);
 				script.PlayButtonSelectedSound();
 				script.StartGame();
 			}
@@ -96,11 +165,12 @@ public class InGameUI : MonoBehaviour
 
 	private void OnGameEnded(bool won)
 	{
-		if (PointsText != null)
-		{
-			PointsText.color = Color.clear;
-		}
+		ShowGameOverUI();
+		// TODO: play sound based on win status
+	}
 
+	public void ShowGameOverUI()
+	{
 		if (GameOverText != null)
 		{
 			GameOverText.gameObject.SetActive(true);
@@ -109,41 +179,6 @@ public class InGameUI : MonoBehaviour
 		if (RetryGameButton != null)
 		{
 			RetryGameButton.gameObject.SetActive(true);
-		}
-
-		// TODO: play sound based on win status
-	}
-
-	private void OnDestroy()
-	{
-		GameStateManager.PointsUpdated -= UpdatePointsText;
-		GameStateManager.GameStarted -= OnGameStarted;
-		GameStateManager.GameEnded -= OnGameEnded;
-	}
-
-	private void UpdatePointsText(int points)
-	{
-		if (PointsText != null)
-		{
-			PointsText.text = $"POINTS: {points}";
-		}
-	}
-
-	private void OnGameStarted()
-	{
-		if (PointsText != null)
-		{
-			PointsText.color = Color.white;
-		}
-
-		if (QuitGameButton != null)
-		{
-			QuitGameButton.gameObject.SetActive(true);
-		}
-
-		if (GameOverText != null)
-		{
-			GameOverText.gameObject.SetActive(false);
 		}
 	}
 }
