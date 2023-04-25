@@ -97,7 +97,7 @@ public class GameStateManager : MonoBehaviour
 		bool isMatch = EvaluateMatch();
 		if (isMatch)
 		{
-			StartCoroutine(WaitToPlayMatchParticle(0.5f));
+			StartCoroutine(WaitToPlayMatchParticle(0.5f, true));
 			StartCoroutine(WaitToRemove(1.0f));
 			return;
 		}
@@ -206,15 +206,16 @@ public class GameStateManager : MonoBehaviour
 		EvaluateGameOver();
 	}
 
-	public IEnumerator WaitToPlayMatchParticle(float seconds)
+	public IEnumerator WaitToPlayMatchParticle(float seconds, bool isMatch = false)
 	{
 		yield return new WaitForSeconds(seconds);
 		if (SecondCard.GameObject.TryGetComponent<Card>(out var secondCardScript))
 		{
 			secondCardScript.ShowMatchEffect();
 			PlayCardsMatchSound();
-			Points++;
+			Points = IsHypeActive ? Points + 2 : Points + 1;
 			PointsUpdated?.Invoke(Points);
+			IsHypeActive = isMatch;
 		}
 	}
 
